@@ -1,17 +1,8 @@
 #!/bin/bash
 
 # =====================================================
-# Script de Exemplo - Configuração de Variáveis
+# Script - Configuração de Variáveis
 # Rede Mais Social - Projeto Software
-# =====================================================
-# 
-# INSTRUÇÕES:
-# 1. Copie este arquivo: cp config-example.sh config.sh
-# 2. Edite config.sh com suas credenciais reais
-# 3. Execute: source config.sh
-# 4. Execute a aplicação Spring Boot
-#
-# OU use o script interativo: ./config.sh
 # =====================================================
 
 # Configurações do Banco de Dados MySQL
