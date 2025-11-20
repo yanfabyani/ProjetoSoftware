@@ -7,7 +7,7 @@
 -- e as especificações das entidades JPA.
 -- =====================================================
 
--- Remove o banco de dados se existir (CUIDADO: apaga todos os dados!)
+-- Remove o banco de dados se existir
 DROP DATABASE IF EXISTS rede_mais_social;
 
 -- Cria o banco de dados
@@ -185,7 +185,7 @@ CREATE TABLE interesse (
 -- TABELAS DE RELACIONAMENTO N:N
 -- =====================================================
 
--- Tabela: perfil_habilidade (relacionamento Many-to-Many)
+-- Tabela: perfil_habilidade
 CREATE TABLE perfil_habilidade (
     perfil_id BIGINT NOT NULL,
     habilidade_id BIGINT NOT NULL,
@@ -196,7 +196,7 @@ CREATE TABLE perfil_habilidade (
     INDEX idx_habilidade (habilidade_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Tabela: perfil_interesse (relacionamento Many-to-Many)
+-- Tabela: perfil_interesse 
 CREATE TABLE perfil_interesse (
     perfil_id BIGINT NOT NULL,
     interesse_id BIGINT NOT NULL,
@@ -207,8 +207,6 @@ CREATE TABLE perfil_interesse (
     INDEX idx_interesse (interesse_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- =====================================================
--- FIM DO SCRIPT
 -- =====================================================
 -- Para executar este script:
 -- mysql -u root -p < database/create_database.sql
