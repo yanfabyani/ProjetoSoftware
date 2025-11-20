@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certidões - Rede Mais Social</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <h1>Rede Mais Social</h1>
+        </div>
+
+        <div class="steps">
+            <div class="step">1. Pessoa Jurídica</div>
+            <div class="step active">2. Certidões</div>
+            <div class="step">3. Perfil</div>
+            <div class="step">4. Termo</div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h1>Certidões e Documentos</h1>
+                <p>Envie suas certidões ou selecione os documentos que você já possui.</p>
+            </div>
+
+            <div th:if="${erro}" class="alert alert-error" th:text="${erro}"></div>
+
+            <form th:action="@{/afiliacao/certidao}" method="post">
+                <input type="hidden" name="pessoaId" th:value="${pessoaId}">
+
+                <div class="form-group">
+                    <label for="certidaoSelecionada">Certidão Disponível *</label>
+                    <select id="certidaoSelecionada" name="certidaoSelecionada" required>
+                        <option value="">Selecione</option>
+                        <option th:each="certidao : ${opcoesCertidao}"
+                                th:value="${certidao}"
+                                th:text="${certidao}">
+                        </option>
+                    </select>
+                </div>
+
+                <p class="help-text">
+                    Você poderá anexar os documentos reais posteriormente durante a etapa de validação.
+                </p>
+
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <a th:href="@{/afiliacao/solicitar/pj}" class="btn btn-secondary" style="flex: 1;">Voltar</a>
+                    <button type="submit" class="btn btn-primary" style="flex: 2;">Continuar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+

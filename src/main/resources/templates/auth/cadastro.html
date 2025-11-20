@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Conta - Rede Mais Social</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <style>
+        /* garante que email, senha e confirmar senha tenham tamanho idêntico */
+        .form-group input[type="email"],
+        .form-group input[type="password"] {
+            width: 100%;
+            height: 48px;
+            padding: 0 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            font-size: 1rem;
+            box-sizing: border-box;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo">
+            <h1>Rede Mais Social</h1>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h1>Criar conta de acesso</h1>
+                <p>Defina uma senha para acessar a Rede Mais Social.</p>
+            </div>
+
+            <div th:if="${mensagem}" class="alert alert-info" th:text="${mensagem}"></div>
+            <div th:if="${erro}" class="alert alert-error" th:text="${erro}"></div>
+
+            <form th:action="@{/auth/cadastro}" method="post">
+                <input type="hidden" name="redirect" th:value="${redirect}">
+
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        th:value="${email}"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="senha">Senha</label>
+                    <input
+                        type="password"
+                        id="senha"
+                        name="senha"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmarSenha">Confirmar senha</label>
+                    <input
+                        type="password"
+                        id="confirmarSenha"
+                        name="confirmarSenha"
+                        required
+                    >
+                </div>
+
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <a th:href="@{/afiliacao}" class="btn btn-secondary" style="flex: 1;">
+                        Voltar
+                    </a>
+                    <button type="submit" class="btn btn-primary" style="flex: 2;">
+                        Criar conta
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

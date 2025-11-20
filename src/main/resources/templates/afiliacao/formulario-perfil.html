@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil, Habilidades e Interesses - Rede Mais Social</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <h1>Rede Mais Social</h1>
+        </div>
+        
+        <div class="steps">
+            <div class="step">1. Identificação</div>
+            <div class="step active">2. Perfil</div>
+            <div class="step">3. Termo</div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h1>Perfil, Habilidades e Interesses</h1>
+                <p>Conte-nos sobre você</p>
+            </div>
+            
+            <div th:if="${erro}" class="alert alert-error" th:text="${erro}"></div>
+            
+            <form th:action="@{/afiliacao/perfil}" method="post">
+                <input type="hidden" name="pessoaId" th:value="${pessoaId}">
+                
+                <div class="habilidades-interesses">
+                    <div class="form-group">
+                        <label for="habilidades">Habilidades *</label>
+                        <textarea id="habilidades" name="habilidades" rows="6" required
+                                  placeholder="Informe suas habilidades, uma por linha.&#10;Exemplo:&#10;Ensino de idiomas&#10;Organização de eventos&#10;Assistência jurídica"></textarea>
+                        <span class="help-text">Informe suas habilidades, uma por linha</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="interesses">Interesses *</label>
+                        <textarea id="interesses" name="interesses" rows="6" required
+                                  placeholder="Informe seus interesses, um por linha.&#10;Exemplo:&#10;Educação&#10;Meio ambiente&#10;Assistência social"></textarea>
+                        <span class="help-text">Informe seus interesses, um por linha</span>
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <a th:href="@{/afiliacao/solicitar}" class="btn btn-secondary" style="flex: 1;">
+                        Voltar
+                    </a>
+                    <button type="submit" class="btn btn-primary" style="flex: 2;">
+                        Continuar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
