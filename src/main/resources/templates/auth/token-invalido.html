@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token Inválido - Rede Mais Social</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <h1>Rede Mais Social</h1>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h1>Token Inválido</h1>
+            </div>
+            
+            <div class="alert alert-error">
+                <strong>Erro!</strong>
+                <p style="margin-top: 0.5rem;" th:text="${erro}"></p>
+            </div>
+            
+            <div style="text-align: center; padding: 2rem 0;">
+                <div style="font-size: 4rem; margin-bottom: 1rem;">❌</div>
+                
+                <p style="color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.8;">
+                    O link de recuperação de senha é inválido ou expirou. 
+                    Por favor, solicite um novo link.
+                </p>
+                
+                <div style="margin-top: 2rem;">
+                    <a th:href="@{/auth/login}" class="btn btn-primary">
+                        Voltar para Login
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

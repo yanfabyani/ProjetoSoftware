@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Pessoa Física - Rede Mais Social</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <h1>Rede Mais Social</h1>
+        </div>
+
+        <div class="steps">
+            <div class="step active">1. Pessoa Física</div>
+            <div class="step">2. Perfil</div>
+            <div class="step">3. Termo</div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h1>Dados do Voluntário Pessoa Física</h1>
+                <p>Preencha seus dados para continuar o processo.</p>
+            </div>
+
+            <div th:if="${mensagem}" class="alert alert-info" th:text="${mensagem}"></div>
+            <div th:if="${erro}" class="alert alert-error" th:text="${erro}"></div>
+
+            <form th:action="@{/afiliacao/solicitar/pf}" th:object="${formularioPF}" method="post">
+                <div class="form-group">
+                    <label for="nome">Nome Completo *</label>
+                    <input id="nome" type="text" th:field="*{nome}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail *</label>
+                    <input id="email" type="email" th:field="*{email}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cpf">CPF *</label>
+                    <input id="cpf" type="text" th:field="*{cpf}" placeholder="000.000.000-00" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="endereco">Endereço *</label>
+                    <textarea id="endereco" th:field="*{endereco}" rows="3" required
+                              placeholder="Rua, número, bairro, cidade, estado, CEP"></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="dataNascimento">Data de Nascimento *</label>
+                        <input id="dataNascimento" type="date" th:field="*{dataNascimento}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sexo">Sexo *</label>
+                        <select id="sexo" th:field="*{sexo}" required>
+                            <option value="">Selecione</option>
+                            <option value="M">Masculino</option>
+                            <option value="F">Feminino</option>
+                            <option value="O">Outro</option>
+                            <option value="N">Prefiro não informar</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="profissao">Profissão *</label>
+                        <input id="profissao" type="text" th:field="*{profissao}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nacionalidade">Nacionalidade *</label>
+                        <input id="nacionalidade" type="text" th:field="*{nacionalidade}" required>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <a th:href="@{/afiliacao/solicitar}" class="btn btn-secondary" style="flex: 1;">Voltar</a>
+                    <button type="submit" class="btn btn-primary" style="flex: 2;">Continuar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+

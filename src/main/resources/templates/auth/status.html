@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status da Solicitação - Rede Mais Social</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.9rem;
+            border-radius: 999px;
+            background-color: rgba(59, 130, 246, 0.08);
+            color: #1d4ed8;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            background-color: #1d4ed8;
+        }
+
+        .status-text {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-top: 1rem;
+        }
+
+        .email-highlight {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .alert-info-strong {
+            margin-top: 1.5rem;
+            padding: 1rem 1.25rem;
+            border-radius: 12px;
+            background-color: rgba(251, 191, 36, 0.08);
+            border: 1px solid rgba(251, 191, 36, 0.5);
+            color: #92400e;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="logo">
+        <h1>Rede Mais Social</h1>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h1>Status da sua solicitação</h1>
+            <p>Acompanhe o andamento da sua afiliação</p>
+        </div>
+
+        <div>
+            <div class="status-badge">
+                <span class="status-dot"></span>
+                <span>Aguardando aprovação</span>
+            </div>
+
+            <p class="status-text">
+                Sua solicitação de afiliação foi recebida e está em análise pela equipe da
+                Rede Mais Social.
+            </p>
+
+            <p class="status-text">
+                Enviaremos atualizações para o e-mail
+                <span class="email-highlight" th:text="${email}">seuemail@exemplo.com</span>.
+            </p>
+
+            <div class="alert-info-strong">
+                <strong>Fique atento ao seu e-mail!</strong><br>
+                Você receberá uma mensagem quando sua afiliação for aprovada ou se precisarmos
+                de mais informações.
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+            <a th:href="@{/afiliacao}" class="btn btn-secondary" style="flex: 1;">
+                Voltar para início
+            </a>
+            <a th:href="@{/auth/logout}" class="btn btn-primary" style="flex: 1;">
+                Sair
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

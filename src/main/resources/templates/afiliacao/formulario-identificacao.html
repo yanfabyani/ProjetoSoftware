@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Identificação - Rede Mais Social</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <h1>Rede Mais Social</h1>
+        </div>
+        
+        <div class="steps">
+            <div class="step active">1. Identificação</div>
+            <div class="step">2. Perfil</div>
+            <div class="step">3. Termo</div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h1>Dados de Identificação</h1>
+                <p>Preencha seus dados pessoais</p>
+            </div>
+            
+            <div th:if="${erro}" class="alert alert-error" th:text="${erro}"></div>
+            
+            <form th:action="@{/afiliacao/solicitar}" th:object="${formulario}" method="post">
+                <div class="form-group">
+                    <label for="email">E-mail *</label>
+                    <input type="email" id="email" th:field="*{email}" required>
+                    <span class="help-text">Será usado para validação e comunicação</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cpfOuCnpj">CPF ou CNPJ *</label>
+                    <input type="text" id="cpfOuCnpj" th:field="*{cpfOuCnpj}" required 
+                           placeholder="000.000.000-00 ou 00.000.000/0000-00">
+                    <span class="help-text">Informe seu CPF (11 dígitos) ou CNPJ (14 dígitos)</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="nome">Nome Completo *</label>
+                    <input type="text" id="nome" th:field="*{nome}" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="sexo">Sexo</label>
+                    <select id="sexo" th:field="*{sexo}">
+                        <option value="">Selecione</option>
+                        <option value="M">Masculino</option>
+                        <option value="F">Feminino</option>
+                        <option value="O">Outro</option>
+                        <option value="N">Prefiro não informar</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dataNascimento">Data de Nascimento *</label>
+                    <input type="date" id="dataNascimento" th:field="*{dataNascimento}" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="nacionalidade">Nacionalidade</label>
+                    <input type="text" id="nacionalidade" th:field="*{nacionalidade}" 
+                           placeholder="Ex: Brasileira">
+                </div>
+                
+                <div class="form-group">
+                    <label for="enderecoResidencial">Endereço Residencial</label>
+                    <textarea id="enderecoResidencial" th:field="*{enderecoResidencial}" 
+                              rows="3" placeholder="Rua, número, bairro, cidade, estado, CEP"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="profissao">Profissão</label>
+                    <input type="text" id="profissao" th:field="*{profissao}" 
+                           placeholder="Ex: Engenheiro, Professor, etc.">
+                </div>
+                
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <a th:href="@{/afiliacao}" class="btn btn-secondary" style="flex: 1;">
+                        Voltar
+                    </a>
+                    <button type="submit" class="btn btn-primary" style="flex: 2;">
+                        Continuar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termo de Compromisso - Rede Mais Social</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <h1>Rede Mais Social</h1>
+        </div>
+        
+        <div class="steps">
+            <div class="step">1. Identificação</div>
+            <div class="step">2. Perfil</div>
+            <div class="step active">3. Termo</div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h1>Termo de Compromisso</h1>
+                <p>Leia atentamente e aceite para continuar</p>
+            </div>
+            
+            <div th:if="${mensagem}" class="alert alert-error" th:text="${mensagem}"></div>
+            
+            <div class="termo-content" th:text="${termo.conteudo}">
+                <!-- Conteúdo do termo será inserido aqui -->
+            </div>
+            
+            <form th:action="@{/afiliacao/termo}" method="post">
+                <input type="hidden" name="pessoaId" th:value="${pessoaId}">
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="aceitar" name="aceitar" value="true" required>
+                    <label for="aceitar">
+                        Li e aceito os termos e condições estabelecidos no termo de compromisso acima
+                    </label>
+                </div>
+                
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <a th:href="@{/afiliacao/perfil}" class="btn btn-secondary" style="flex: 1;">
+                        Voltar
+                    </a>
+                    <button type="submit" class="btn btn-primary" style="flex: 2;">
+                        Aceitar e Continuar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmação de E-mail - Rede Mais Social</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <h1>Rede Mais Social</h1>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h1>Validação de E-mail</h1>
+                <p>Verifique sua caixa de entrada</p>
+            </div>
+            
+            <div class="alert alert-info">
+                <strong>E-mail enviado!</strong>
+                <p style="margin-top: 0.5rem;">
+                    Enviamos um e-mail de validação para: <strong th:text="${email}"></strong>
+                </p>
+            </div>
+            
+            <div style="text-align: center; padding: 2rem 0;">
+                <div style="font-size: 4rem; margin-bottom: 1rem;">📧</div>
+                <h2 style="margin-bottom: 1rem; color: var(--text-primary);">
+                    Verifique sua caixa de entrada
+                </h2>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.8;">
+                    Clique no link de validação que enviamos para seu e-mail para continuar 
+                    o processo de afiliação. O link é válido por 24 horas.
+                </p>
+                
+                <div style="background: var(--bg-secondary); padding: 1.5rem; border-radius: 8px; margin: 2rem 0;">
+                    <h3 style="font-size: 1rem; margin-bottom: 1rem; color: var(--text-primary);">
+                        Não recebeu o e-mail?
+                    </h3>
+                    <ul style="text-align: left; list-style: none; padding: 0; color: var(--text-secondary);">
+                        <li style="padding: 0.5rem 0;">✓ Verifique sua pasta de spam</li>
+                        <li style="padding: 0.5rem 0;">✓ Aguarde alguns minutos</li>
+                        <li style="padding: 0.5rem 0;">✓ Verifique se o e-mail está correto</li>
+                    </ul>
+                </div>
+                
+                <a th:href="@{/afiliacao}" class="btn btn-secondary">
+                    Voltar ao Início
+                </a>
+                <!-- NOVO BOTÃO -->
+                    <a th:href="@{/auth/cadastro}" class="btn btn-secondary" style="width: 220px;">
+                        Cadastrar Senha
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

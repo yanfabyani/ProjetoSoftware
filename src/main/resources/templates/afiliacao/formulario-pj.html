@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Pessoa Jurídica - Rede Mais Social</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <h1>Rede Mais Social</h1>
+        </div>
+
+        <div class="steps">
+            <div class="step active">1. Pessoa Jurídica</div>
+            <div class="step">2. Certidões</div>
+            <div class="step">3. Perfil</div>
+            <div class="step">4. Termo</div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h1>Dados do Voluntário Pessoa Jurídica</h1>
+                <p>Preencha os dados da organização.</p>
+            </div>
+
+            <div th:if="${mensagem}" class="alert alert-info" th:text="${mensagem}"></div>
+            <div th:if="${erro}" class="alert alert-error" th:text="${erro}"></div>
+
+            <form th:action="@{/afiliacao/solicitar/pj}" th:object="${formularioPJ}" method="post">
+                <div class="form-group">
+                    <label for="nome">Nome do Responsável *</label>
+                    <input id="nome" type="text" th:field="*{nome}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail *</label>
+                    <input id="email" type="email" th:field="*{email}" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cnpj">CNPJ *</label>
+                        <input id="cnpj" type="text" th:field="*{cnpj}" placeholder="00.000.000/0000-00" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="razaoSocial">Razão Social *</label>
+                        <input id="razaoSocial" type="text" th:field="*{razaoSocial}" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="representanteLegal">Representante Legal *</label>
+                    <input id="representanteLegal" type="text" th:field="*{representanteLegal}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="enderecoComercial">Endereço Comercial *</label>
+                    <textarea id="enderecoComercial" th:field="*{enderecoComercial}" rows="3" required
+                              placeholder="Rua, número, bairro, cidade, estado, CEP"></textarea>
+                </div>
+
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <a th:href="@{/afiliacao/solicitar}" class="btn btn-secondary" style="flex: 1;">Voltar</a>
+                    <button type="submit" class="btn btn-primary" style="flex: 2;">Continuar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
