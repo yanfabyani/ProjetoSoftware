@@ -8,7 +8,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/rede_mais_social?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     username: root
-    password: clau2835
+    password: 12345
     driver-class-name: com.mysql.cj.jdbc.Driver
   
   jpa:
